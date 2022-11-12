@@ -65,6 +65,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { LocalNotifications } from "@capacitor/local-notifications";
 import {
   IonBackButton,
   IonButton,
@@ -137,6 +138,19 @@ export default defineComponent({
     return {
       loginMutation,
     };
+  },
+  async created() {
+    await LocalNotifications.requestPermissions();
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          id: 123,
+          title: "Yo what?",
+          body: "its ok",
+          largeBody: "its ok dude",
+        },
+      ],
+    });
   },
   computed: {
     usernameValid: () => true,
