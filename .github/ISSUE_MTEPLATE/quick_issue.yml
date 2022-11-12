@@ -1,0 +1,14 @@
+---
+name: Quick issue report
+about: Create a quick report knowing very well that you are creating a mess by not doing the steps required
+title: ''
+labels: 'bug'
+assignees: ''
+
+---
+
+- [ ] You will take care of providing the necessary info for this issue or to make it understandable for others
+
+# Describe the bug
+
+# Add screenshots, logs, env (DEV, STAGING, PROD), reproduction steps
