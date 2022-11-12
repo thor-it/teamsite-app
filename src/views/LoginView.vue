@@ -8,18 +8,18 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <form novalidate>
+    <form novalidate @submit.prevent="onLogin">
       <ion-list>
         <ion-item>
           <ion-label color="primary" position="stacked">Username</ion-label>
           <ion-input
-              v-model="username"
-              :spellcheck="false"
-              autocapitalize="off"
-              name="username"
-              placeholder="Provide your username or email"
-              required
-              type="text"
+            v-model="username"
+            :spellcheck="false"
+            autocapitalize="off"
+            name="username"
+            placeholder="Provide your username or email"
+            required
+            type="text"
           ></ion-input>
         </ion-item>
 
@@ -29,8 +29,13 @@
 
         <ion-item>
           <ion-label color="primary" position="stacked">Password</ion-label>
-          <ion-input v-model="password" name="password" placeholder="Provide your passÖword" required
-                     type="password"></ion-input>
+          <ion-input
+            v-model="password"
+            name="password"
+            placeholder="Provide your password"
+            required
+            type="password"
+          ></ion-input>
         </ion-item>
 
         <ion-text color="danger">
@@ -40,10 +45,18 @@
 
       <ion-row responsive-sm>
         <ion-col>
-          <ion-button expand="block" type="submit" @click="onLogin()">Login</ion-button>
+          <ion-button
+            expand="block"
+            type="submit"
+            @click.prevent="onLogin($event)"
+          >
+            Login
+          </ion-button>
         </ion-col>
         <ion-col>
-          <ion-button color="light" expand="block" @click="onSignup()">Signup</ion-button>
+          <ion-button color="light" expand="block" @click="onSignup()">
+            Signup
+          </ion-button>
         </ion-col>
       </ion-row>
     </form>
@@ -51,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import {
   IonBackButton,
   IonButton,
@@ -65,8 +78,11 @@ import {
   IonRow,
   IonText,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  toastController,
 } from "@ionic/vue";
+import { useMutation, useQueryClient } from "@tanstack/vue-query";
+import axios from "axios";
 
 export default defineComponent({
   name: "LoginView",
@@ -87,7 +103,40 @@ export default defineComponent({
     IonItem,
     IonHeader,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+  },
+  setup: () => {
+    const queryClient = useQueryClient();
+
+    // Query
+    // const { isLoading, isError, data, error } = useQuery({
+    //   queryKey: ["todos"],
+    //   queryFn: () => fetch("http://localhost:5000/api/v2/ApiStatus/tenant"),
+    // });
+
+    // // Mutation
+    const loginMutation = useMutation({
+      mutationFn: ({
+        username,
+        password,
+      }: {
+        username: string;
+        password: string;
+      }) => {
+        return axios.post("http://localhost:5000/api/v2/signin/login", {
+          username,
+          password,
+        });
+      },
+      onSuccess: () => {
+        // Invalidate and refetch
+        // queryClient.invalidateQueries({ queryKey: ["todos"] });
+      },
+    });
+
+    return {
+      loginMutation,
+    };
   },
   computed: {
     usernameValid: () => true,
@@ -95,12 +144,27 @@ export default defineComponent({
     submitted: () => false,
   },
   methods: {
-    onLogin() {
+    onLogin(e: Event) {
+      e.preventDefault();
+      this.loginMutation.mutate({
+        username: this.username,
+        password: this.password,
+      });
       console.log("login");
+      this.presentToast("top");
     },
     onSignup() {
       console.log("signup");
-    }
-  }
-})
+    },
+    async presentToast(position: "top" | "middle" | "bottom") {
+      const toast = await toastController.create({
+        message: "Login worked!",
+        duration: 1500,
+        position: position,
+      });
+
+      await toast.present();
+    },
+  },
+});
 </script>
