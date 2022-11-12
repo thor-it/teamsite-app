@@ -2,6 +2,7 @@
   "name": "teamsite-app",
   "version": "0.0.1",
   "private": true,
+  "license": "AGPL-3.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "ionic:android": "ionic cap run android -l --external",
