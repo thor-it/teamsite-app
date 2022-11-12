@@ -8,7 +8,10 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "preopenapi:generate": "rimraf src/api/services/services/ src/api/services/models/",
+    "openapi:generate": "openapi -i http://localhost:5000/swagger/v1/swagger.json -o src/api/ --exportCore false",
+    "postopenapi:generate": "prettier --write \"src/api/services/**/*.ts\""
   },
   "dependencies": {
     "@capacitor/android": "4.4.0",
@@ -27,6 +30,10 @@
     "@ionic/vue-router": "^6.0.0",
     "core-js": "^3.6.5",
     "ionicons": "^6.0.3",
+    "openapi-typescript": "^6.0.3",
+    "openapi-typescript-codegen": "^0.23.0",
+    "pinia": "^2.0.23",
+    "prettier": "^2.7.1",
     "swiper": "^8.4.4",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12"
