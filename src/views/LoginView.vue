@@ -17,28 +17,30 @@
               :spellcheck="false"
               autocapitalize="off"
               name="username"
+              placeholder="Provide your username or email"
               required
               type="text"
           ></ion-input>
         </ion-item>
 
         <ion-text color="danger">
-          <p v-show="!usernameValid || !!submitted" padding-left>Username is required</p>
+          <p v-show="!usernameValid || !!submitted">Username is required</p>
         </ion-text>
 
         <ion-item>
           <ion-label color="primary" position="stacked">Password</ion-label>
-          <ion-input v-model="password" name="password" required type="password"></ion-input>
+          <ion-input v-model="password" name="password" placeholder="Provide your passÖword" required
+                     type="password"></ion-input>
         </ion-item>
 
         <ion-text color="danger">
-          <p v-show="!passwordValid || !!submitted" padding-left>Password is required</p>
+          <p v-show="!passwordValid || !!submitted">Password is required</p>
         </ion-text>
       </ion-list>
 
       <ion-row responsive-sm>
         <ion-col>
-          <ion-button expand="block" type="submit" @click="onLogin(loginForm)">Login</ion-button>
+          <ion-button expand="block" type="submit" @click="onLogin()">Login</ion-button>
         </ion-col>
         <ion-col>
           <ion-button color="light" expand="block" @click="onSignup()">Signup</ion-button>
@@ -56,7 +58,8 @@ import {
   IonCol,
   IonContent,
   IonHeader,
-  IonInput, IonItem,
+  IonInput,
+  IonItem,
   IonLabel,
   IonList,
   IonRow,
@@ -92,10 +95,10 @@ export default defineComponent({
     submitted: () => false,
   },
   methods: {
-    onLogin(ev: any) {
-      ev.preventDefault();
+    onLogin() {
+      console.log("login");
     },
-    onSignup(ev: any) {
+    onSignup() {
       console.log("signup");
     }
   }
