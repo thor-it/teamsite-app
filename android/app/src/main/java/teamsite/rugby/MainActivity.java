@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package teamsite.rugby;
 
 import com.getcapacitor.BridgeActivity;
 

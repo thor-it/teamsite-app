@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'teamsite-app',
+  appId: 'teamsite.rugby',
+  appName: 'teamsite-rugby-app',
   webDir: 'dist',
   bundledWebRuntime: false,
   plugins: {
