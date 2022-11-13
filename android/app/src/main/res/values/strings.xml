@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">teamsite-rugby-app</string>
-    <string name="title_activity_main">teamsite-rugby-app</string>
-    <string name="package_name">teamsite.rugby</string>
-    <string name="custom_url_scheme">teamsite.rugby</string>
+    <string name="app_name">Teamsite</string>
+    <string name="title_activity_main">Teamsite</string>
+    <string name="package_name">app.teamsite</string>
+    <string name="custom_url_scheme">app.teamsite</string>
 </resources>

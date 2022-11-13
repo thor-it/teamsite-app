@@ -1,4 +1,4 @@
-package teamsite.rugby;
+package app.teamsite;
 
 import com.getcapacitor.BridgeActivity;
 

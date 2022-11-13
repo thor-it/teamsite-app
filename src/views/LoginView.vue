@@ -8,6 +8,15 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
+    <div class="center">
+      <section>
+        <ion-button expand="block" @click="logInGoogle()">
+          <img :src="require('@/assets/google.svg')" class="google" />
+          <span>Login with Google</span>
+        </ion-button>
+      </section>
+    </div>
+
     <form novalidate @submit.prevent="onLogin">
       <ion-list>
         <ion-item>
@@ -64,11 +73,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import {
   IonBackButton,
   IonButton,
+  IonButtons,
   IonCol,
   IonContent,
   IonHeader,
@@ -84,6 +94,7 @@ import {
 } from "@ionic/vue";
 import { useMutation, useQueryClient } from "@tanstack/vue-query";
 import axios from "axios";
+import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 
 export default defineComponent({
   name: "LoginView",
@@ -96,6 +107,7 @@ export default defineComponent({
     IonCol,
     IonRow,
     IonButton,
+    IonButtons,
     IonBackButton,
     IonText,
     IonInput,
@@ -107,6 +119,19 @@ export default defineComponent({
     IonToolbar,
   },
   setup: () => {
+    onMounted(() => {
+      GoogleAuth.initialize({
+        clientId: "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com",
+        grantOfflineAccess: true,
+        scopes: ["profile", "email"],
+      });
+    });
+
+    const logInGoogle = async () => {
+      const response = await GoogleAuth.signIn();
+      console.log(response);
+    };
+
     const queryClient = useQueryClient();
 
     // Query
@@ -136,6 +161,7 @@ export default defineComponent({
     });
 
     return {
+      logInGoogle,
       loginMutation,
     };
   },
@@ -145,8 +171,8 @@ export default defineComponent({
       notifications: [
         {
           id: 123,
-          title: "Yo what?",
-          body: "its ok",
+          title: "App rebuilt",
+          body: "Build at " + new Date().toLocaleTimeString(),
           largeBody: "its ok dude",
         },
       ],
