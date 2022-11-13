@@ -92,7 +92,7 @@ import {
   IonToolbar,
   toastController,
 } from "@ionic/vue";
-import { useMutation, useQueryClient } from "@tanstack/vue-query";
+import { useMutation } from "@tanstack/vue-query";
 import axios from "axios";
 import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 
@@ -121,7 +121,8 @@ export default defineComponent({
   setup: () => {
     onMounted(() => {
       GoogleAuth.initialize({
-        clientId: "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com",
+        clientId:
+          "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com",
         grantOfflineAccess: true,
         scopes: ["profile", "email"],
       });
@@ -132,7 +133,7 @@ export default defineComponent({
       console.log(response);
     };
 
-    const queryClient = useQueryClient();
+    // const queryClient = useQueryClient();
 
     // Query
     // const { isLoading, isError, data, error } = useQuery({
