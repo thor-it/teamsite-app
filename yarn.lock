@@ -1062,6 +1062,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/status-bar/-/status-bar-4.0.1.tgz#d1320add5f4ef383394b94beae45a0c5af7250e1"
   integrity sha512-BmEyOf3m/hAf8bO4hCX0m5gpQPSgd05mGYl+9E841WUZeJjcYlmiG/EBshAUb2uGCVtyNaG36yPXB0r0Ypg+rw==
 
+"@codetrix-studio/capacitor-google-auth@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@codetrix-studio/capacitor-google-auth/-/capacitor-google-auth-3.2.0.tgz#225219e8242f77f85fe557dfe2cb5eb73453fe22"
+  integrity sha512-oJ9FTnNWtqK5YyNzBzt5FFXwrxDFzPf2GsI7qFODmeCgfMSQEv0PlIklxYICJj8JljRiHpleLd8PEyCfGj8x0Q==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -1638,18 +1643,18 @@
   dependencies:
     remove-accents "0.4.2"
 
-"@tanstack/query-core@4.15.0":
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.15.0.tgz#751a83db6251421391cb39d9df6551eb7ba4a4f1"
-  integrity sha512-zEZ7AuQRb8Ts+WXw9TtGtqydxmcOSRsWkFYxxH8dykPcumsV49BcNDLhHtYqVGPQpMjqMS4RoVYQP+budT6WbA==
+"@tanstack/query-core@4.15.1":
+  version "4.15.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.15.1.tgz#a282f04fe5e612b50019e1cfaf0efabd220e00ce"
+  integrity sha512-+UfqJsNbPIVo0a9ANW0ZxtjiMfGLaaoIaL9vZeVycvmBuWywJGtSi7fgPVMCPdZQFOzMsaXaOsDtSKQD5xLRVQ==
 
 "@tanstack/vue-query@^4.15.0":
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-4.15.0.tgz#966dae621103482c1781f79b1c0863f02e42264a"
-  integrity sha512-rJENoeE0kKO9YFuHdrIaaIAvkKmEDWX33qy7fyzNy3Q2/HVjMoAQbKaDnecXa1at9S5fSsGJ0xXCNmgONQeL4Q==
+  version "4.15.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/vue-query/-/vue-query-4.15.1.tgz#0b560075cc00012b4328734f5ac76ca613bd0395"
+  integrity sha512-cjZfjiXgEDkydglQ/EHuAVf5UGFfuOSRSSfR57dJJZzAedvp69osePGI/vZ10WXemhce3QWGCT9oxUPtiAwzIA==
   dependencies:
     "@tanstack/match-sorter-utils" "^8.1.1"
-    "@tanstack/query-core" "4.15.0"
+    "@tanstack/query-core" "4.15.1"
     "@vue/devtools-api" "^6.4.2"
     vue-demi "^0.13.11"
 
@@ -2456,9 +2461,9 @@
   integrity sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==
 
 "@vue/test-utils@^2.0.0-rc.16":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.2.1.tgz#c16061e081e0f1d3d5a126b79ae93d2abb6d2c17"
-  integrity sha512-AkLt24wnnxedJ3NX090JYiueog184QqlR5TVNZM+lggCrK8XjeuPr274okaLqDmiRgp4XVCaGa07KqKLGQbsMQ==
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-2.2.2.tgz#b7a33f201e34308efbec0a442696a7ebe8a2ee77"
+  integrity sha512-Eof2ic+Erv7wx2mrYVxBwQtAmMdCU6nywajcFKre0T3d8j6flej1IAKlEzJTn+/6IHvYPxY2hYOsOfXRXI90Jg==
 
 "@vue/vue-loader-v15@npm:vue-loader@^15.9.7":
   version "15.10.0"
