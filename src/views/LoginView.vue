@@ -126,7 +126,7 @@ export default defineComponent({
     onMounted(() => {
       GoogleAuth.initialize({
         clientId:
-          "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com",
+          "104431808572-gjf3i16bsoqo5prsiucdk7ocgrotti86.apps.googleusercontent.com",
         grantOfflineAccess: true,
         scopes: ["profile", "email"],
       });

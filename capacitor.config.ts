@@ -13,13 +13,11 @@ const config: CapacitorConfig = {
     },
     GoogleAuth: {
       clientId: "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com",
-      androidClientId: "104431808572-gjf3i16bsoqo5prsiucdk7ocgrotti86.apps.googleusercontent.com",
+      androidClientId: "104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com", // "104431808572-gjf3i16bsoqo5prsiucdk7ocgrotti86.apps.googleusercontent.com",
       scopes: [
         "profile",
         "email",
       ],
-      serverClientId:
-        "104431808572-gjf3i16bsoqo5prsiucdk7ocgrotti86.apps.googleusercontent.com",
       forceCodeForRefreshToken: true,
     },
   },

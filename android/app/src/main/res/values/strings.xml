@@ -4,4 +4,5 @@
     <string name="title_activity_main">Teamsite</string>
     <string name="package_name">app.teamsite</string>
     <string name="custom_url_scheme">app.teamsite</string>
+    <string name="server_client_id">104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com</string>
 </resources>
