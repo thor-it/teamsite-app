@@ -1,5 +1,6 @@
 {
-  "name": "TeamsiteApp",
+  "name": "Teamsite",
+  "npmClient": "yarn",
   "integrations": {
     "capacitor": {}
   },

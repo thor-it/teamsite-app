@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">TeamsiteApp</string>
-    <string name="title_activity_main">TeamsiteApp</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Teamsite</string>
+    <string name="title_activity_main">Teamsite</string>
+    <string name="package_name">app.teamsite</string>
+    <string name="custom_url_scheme">app.teamsite</string>
+    <string name="server_client_id">104431808572-80ppbmn6jsbn7fkisaj9f1ngdan9dkht.apps.googleusercontent.com</string>
 </resources>

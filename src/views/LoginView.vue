@@ -1,74 +1,87 @@
 <template>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Log In</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <form novalidate @submit.prevent="onLogin">
-      <ion-list>
-        <ion-item>
-          <ion-label color="primary" position="stacked">Username</ion-label>
-          <ion-input
-            v-model="username"
-            :spellcheck="false"
-            autocapitalize="off"
-            name="username"
-            placeholder="Provide your username or email"
-            required
-            type="text"
-          ></ion-input>
-        </ion-item>
-
-        <ion-text color="danger">
-          <p v-show="!usernameValid || !!submitted">Username is required</p>
-        </ion-text>
-
-        <ion-item>
-          <ion-label color="primary" position="stacked">Password</ion-label>
-          <ion-input
-            v-model="password"
-            name="password"
-            placeholder="Provide your password"
-            required
-            type="password"
-          ></ion-input>
-        </ion-item>
-
-        <ion-text color="danger">
-          <p v-show="!passwordValid || !!submitted">Password is required</p>
-        </ion-text>
-      </ion-list>
-
-      <ion-row responsive-sm>
-        <ion-col>
-          <ion-button
-            expand="block"
-            type="submit"
-            @click.prevent="onLogin($event)"
-          >
-            Login
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Log In</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="center">
+        <section>
+          <ion-button expand="block" @click="logInGoogle()">
+            <img :src="require('@/assets/google.svg')" class="google" />
+            <span>Login with Google</span>
           </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button color="light" expand="block" @click="onSignup()">
-            Signup
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </form>
-  </ion-content>
+        </section>
+      </div>
+
+      <form novalidate @submit.prevent="onLogin">
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" position="stacked">Username</ion-label>
+            <ion-input
+              v-model="username"
+              :spellcheck="false"
+              autocapitalize="off"
+              name="username"
+              placeholder="Provide your username or email"
+              required
+              type="text"
+            ></ion-input>
+          </ion-item>
+
+          <ion-text color="danger">
+            <p v-show="!usernameValid || !!submitted">Username is required</p>
+          </ion-text>
+
+          <ion-item>
+            <ion-label color="primary" position="stacked">Password</ion-label>
+            <ion-input
+              v-model="password"
+              name="password"
+              placeholder="Provide your password"
+              required
+              type="password"
+            ></ion-input>
+          </ion-item>
+
+          <ion-text color="danger">
+            <p v-show="!passwordValid || !!submitted">Password is required</p>
+          </ion-text>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <ion-button
+              expand="block"
+              type="submit"
+              @click.prevent="onLogin($event)"
+            >
+              Login
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="light" expand="block" @click="onSignup()">
+              Signup
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { LocalNotifications } from "@capacitor/local-notifications";
 import {
+  IonPage,
   IonBackButton,
   IonButton,
+  IonButtons,
   IonCol,
   IonContent,
   IonHeader,
@@ -82,8 +95,9 @@ import {
   IonToolbar,
   toastController,
 } from "@ionic/vue";
-import { useMutation, useQueryClient } from "@tanstack/vue-query";
+import { useMutation } from "@tanstack/vue-query";
 import axios from "axios";
+import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 
 export default defineComponent({
   name: "LoginView",
@@ -92,10 +106,12 @@ export default defineComponent({
     password: "",
   }),
   components: {
+    IonPage,
     IonContent,
     IonCol,
     IonRow,
     IonButton,
+    IonButtons,
     IonBackButton,
     IonText,
     IonInput,
@@ -107,7 +123,21 @@ export default defineComponent({
     IonToolbar,
   },
   setup: () => {
-    const queryClient = useQueryClient();
+    onMounted(() => {
+      GoogleAuth.initialize({
+        clientId:
+          "104431808572-gjf3i16bsoqo5prsiucdk7ocgrotti86.apps.googleusercontent.com",
+        grantOfflineAccess: true,
+        scopes: ["profile", "email"],
+      });
+    });
+
+    const logInGoogle = async () => {
+      const response = await GoogleAuth.signIn();
+      console.log(response);
+    };
+
+    // const queryClient = useQueryClient();
 
     // Query
     // const { isLoading, isError, data, error } = useQuery({
@@ -136,6 +166,7 @@ export default defineComponent({
     });
 
     return {
+      logInGoogle,
       loginMutation,
     };
   },
@@ -145,8 +176,8 @@ export default defineComponent({
       notifications: [
         {
           id: 123,
-          title: "Yo what?",
-          body: "its ok",
+          title: "App rebuilt",
+          body: "Build at " + new Date().toLocaleTimeString(),
           largeBody: "its ok dude",
         },
       ],

@@ -16,35 +16,50 @@
       <div id="container">
         <strong>Ready to create an app?</strong>
         <IonButton router-link="/login">Login here</IonButton>
-        <p>Start with Ionic <a href="https://ionicframework.com/docs/components" rel="noopener noreferrer"
-                               target="_blank">UI Components</a></p>
+        <p>
+          Start with Ionic
+          <a
+            href="https://ionicframework.com/docs/components"
+            rel="noopener noreferrer"
+            target="_blank"
+            >UI Components</a
+          >
+        </p>
 
-        <br/>
-        <ion-button @click="() => router.push('/some-view')">Go to my view on things</ion-button>
+        <br />
+        <ion-button @click="() => router.push('/some-view')"
+          >Go to my view on things</ion-button
+        >
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import {IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/vue';
-import {defineComponent} from 'vue';
-import {useRouter} from 'vue-router';
-import LoginForm from "@/components/LoginForm.vue";
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/vue";
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'HomePage',
+  name: "HomePage",
   components: {
     IonContent,
     IonButton,
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
   },
   setup() {
-    return {router: useRouter()};
-  }
+    return { router: useRouter() };
+  },
 });
 </script>
 
